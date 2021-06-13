@@ -10,7 +10,6 @@ item --gap SISTEMAS OFFLINE
 item option_one ${space} Gparted
 item option_two ${space} ElementaryOs
 item option_three ${space} Ubuntu 21.04 KDE
-item option_four ${space} kali
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -35,11 +34,7 @@ kernel http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/
 initrd http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/initrd
 boot || goto custom_exit
 
-:option_four
-imgfree
-kernel http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/vmlinuz boot=live  fetch=http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/filesystem.squashfs initrd=initrd ${cmdline}
-initrd http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/initrd
-boot || goto custom_exit
+
 
 
 :custom_exit
