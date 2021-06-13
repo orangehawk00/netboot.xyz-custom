@@ -1,12 +1,47 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu example
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu JUAN ANTONIO ORTEGA CHRISTIAN RUIZ ALVARO RODRIGUEZ
+item --gap SISTEMAS OFFLINE
+item option_one ${space} Gparted
+item option_two ${space} ElementaryOs
+item option_three ${space} Ubuntu 21.04 KDE
+item option_four ${space} kali
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:option_one
+imgfree
+kernel http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/vmlinuz boot=live fetch=http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/filesystem.squashfs union=overlay username=user vga=788 initrd=initrd ${cmdline}
+initrd http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/initrd
+boot
+boot || goto custom_exit
+
+:option_two
+imgfree
+kernel http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/vmlinuz ip=dhcp boot=casper maybe-ubiquity netboot=http fetch=http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/filesystem.squashfs initrd=initrd ${cmdline}
+initrd http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/initrd
+boot || goto custom_exit
+
+:option_three
+imgfree
+kernel http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/vmlinuz ip=dhcp boot=casper netboot=url url=http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/filesystem.squashfs initrd=initrd ${cmdline}
+initrd http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/initrd
+boot || goto custom_exit
+
+:option_four
+imgfree
+kernel http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/vmlinuz boot=live  fetch=http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/filesystem.squashfs initrd=initrd ${cmdline}
+initrd http://192.168.0.200:8080/debian-squash/releases/download/2021.2-4237c18c/initrd
+boot || goto custom_exit
+
+
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
