@@ -17,21 +17,21 @@ goto custom_exit
 
 :option_one
 imgfree
-kernel http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/vmlinuz boot=live fetch=http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/filesystem.squashfs union=overlay username=user vga=788 initrd=initrd ${cmdline}
-initrd http://192.168.0.200:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/initrd
+kernel http://192.168.120.5:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/vmlinuz boot=live fetch=http://192.168.120.5:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/filesystem.squashfs union=overlay username=user vga=788 initrd=initrd ${cmdline}
+initrd http://192.168.120.5:8080/debian-squash/releases/download/1.3.0-1-1edbd7bd/initrd
 boot
 boot || goto custom_exit
 
 :option_two
 imgfree
-kernel http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/vmlinuz ip=dhcp boot=casper maybe-ubiquity netboot=http fetch=http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/filesystem.squashfs initrd=initrd ${cmdline}
-initrd http://192.168.0.200:8080/ubuntu-squash/releases/download/5-ddac8299/initrd
+kernel http://192.168.120.5:8080/ubuntu-squash/releases/download/5-ddac8299/vmlinuz ip=dhcp boot=casper maybe-ubiquity netboot=http fetch=http://192.168.120.5:8080/ubuntu-squash/releases/download/5-ddac8299/filesystem.squashfs initrd=initrd ${cmdline}
+initrd http://192.168.120.5:8080/ubuntu-squash/releases/download/5-ddac8299/initrd
 boot || goto custom_exit
 
 :option_three
 imgfree
-kernel http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/vmlinuz ip=dhcp boot=casper netboot=url url=http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/filesystem.squashfs initrd=initrd ${cmdline}
-initrd http://192.168.0.200:8080/ubuntu-squash/releases/download/21.04-fba75c8c/initrd
+kernel http://192.168.120.5:8080/ubuntu-squash/releases/download/21.04-fba75c8c/vmlinuz ip=dhcp boot=casper netboot=url url=http://192.168.120.5:8080/ubuntu-squash/releases/download/21.04-fba75c8c/filesystem.squashfs initrd=initrd ${cmdline}
+initrd http://192.168.120.5:8080/ubuntu-squash/releases/download/21.04-fba75c8c/initrd
 boot || goto custom_exit
 
 
